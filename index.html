@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zac &amp; Casey — Portfolio (001) / 2026</title>
+    <meta name="description" content="Zac & Casey — an Aussie creative team hiding out in New Zealand. Art direction, copywriting, and the occasional award-winning bit of misc. trouble." />
+    <meta property="og:title" content="Zac & Casey — Portfolio (001)" />
+    <meta property="og:description" content="An Aussie creative team hiding out in New Zealand. Selected work, 2021–2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/hard-rated-helicopter-hero.jpg" />
+    <meta name="theme-color" content="#0d0d0d" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      document.documentElement.classList.add("js");
+    </script>
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="stylesheet" href="styles.css?v=12" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Fixed corner HUD -->
+    <header class="hud" aria-hidden="true">
+      <a class="hud-mark" href="#top">Z<span class="hud-amp">&amp;</span>C<sup>©</sup></a>
+      <span class="hud-index" data-hud-index>(000&thinsp;/&thinsp;008)</span>
+      <span class="hud-label" data-hud-label>Portfolio</span>
+    </header>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="overlay-nav">
+      <span class="menu-toggle-bars" aria-hidden="true"><i></i><i></i></span>
+      <span class="menu-toggle-text">Index</span>
+    </button>
+
+    <!-- Slide-in overlay navigation -->
+    <nav class="overlay" id="overlay-nav" aria-label="Portfolio index" data-overlay hidden>
+      <div class="overlay-inner">
+        <p class="overlay-kicker">(Index) — Selected work</p>
+        <ol class="overlay-list" data-overlay-list></ol>
+        <div class="overlay-foot">
+          <a href="#awards" data-overlay-link>Shiny Nonsense ✦</a>
+          <a href="#contact" data-overlay-link>Slide in →</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero panel panel--black" id="hero" data-panel="hero">
+        <div class="hero-grid">
+          <p class="hero-kicker line-up" data-reveal>
+            <span>(Creative Team)</span>
+            <span>Art Direction · Copywriting · Misc. Trouble</span>
+          </p>
+
+          <p class="hero-marks" data-reveal>
+            <span>Portfolio<br /><b>2026</b></span>
+            <span>Est. AUS<br /><b>→ NZ ’26</b></span>
+          </p>
+
+          <h1 class="hero-title" aria-label="Zac and Casey">
+            <span class="line"><span class="line-inner" data-reveal>ZAC</span></span>
+            <span class="line"><span class="line-inner" data-reveal><span class="hero-amp">&amp;</span>&nbsp;<em>CASEY</em></span></span>
+          </h1>
+
+          <p class="hero-lead" data-reveal>
+            An Aussie creative team currently hiding out in New&nbsp;Zealand.
+            <a class="name-link" href="https://www.linkedin.com/in/zacnairn/" target="_blank" rel="noopener">Zac</a> does the art.
+            <a class="name-link" href="https://www.linkedin.com/in/casey-clarke/" target="_blank" rel="noopener">Casey</a> does the copy.
+            <span class="muted">Sometimes vice&nbsp;versa.</span>
+          </p>
+
+          <figure class="hero-plate" data-reveal aria-label="Zac and Casey collecting Gold at Cannes">
+            <img src="assets/cannes-stage.gif" alt="Zac and Casey walking on stage at Cannes" loading="eager" />
+            <figcaption><span>Cannes Young Lions</span><b>Global Gold ’23</b></figcaption>
+          </figure>
+        </div>
+
+        <span class="hero-dog hero-dog--lola" tabindex="0" aria-label="Lola — pet for a bark">
+          <img src="assets/dog-lola.png" alt="" />
+          <span class="hero-dog-mouth" aria-hidden="true"></span>
+          <span class="hero-dog-label">Lola</span>
+        </span>
+        <span class="hero-dog hero-dog--neal" tabindex="0" aria-label="Neal — pet for a bark">
+          <img src="assets/dog-neal.png" alt="" />
+          <span class="hero-dog-mouth" aria-hidden="true"></span>
+          <span class="hero-dog-label">Neal</span>
+        </span>
+
+        <a class="hero-cue" href="#index" aria-label="Scroll to the work">
+          <span>(Scroll)</span><span>The Work ↓</span>
+        </a>
+      </section>
+
+      <!-- TICKER -->
+      <div class="ticker panel--red" aria-hidden="true">
+        <div class="ticker-track" data-ticker></div>
+      </div>
+
+      <!-- WORK INDEX -->
+      <section class="index panel panel--paper" id="index" data-panel="index">
+        <div class="panel-head">
+          <p class="eyebrow">(The Index)</p>
+          <h2 class="panel-title">Selected<br />Work <span class="paren">(001–008)</span></h2>
+          <p class="panel-sub">A short list of the things we’re proudest of, and a few we just like.</p>
+        </div>
+        <ol class="worklist" data-worklist></ol>
+        <figure class="worklist-preview" data-preview aria-hidden="true"><img alt="" /></figure>
+      </section>
+
+      <!-- PROJECT PANELS (rendered by JS) -->
+      <div id="cases" data-cases></div>
+
+      <!-- SHINY NONSENSE / AWARDS -->
+      <section class="awards panel panel--gray" id="awards" data-panel="awards">
+        <div class="panel-head">
+          <p class="eyebrow">(The Trophy Cabinet)</p>
+          <h2 class="panel-title shiny-title" aria-label="Shiny Nonsense">
+            <span class="shiny-word" data-shiny>Shiny</span><br /><span class="shiny-word" data-shiny>Nonsense</span>
+          </h2>
+          <p class="panel-sub">A reassuring amount of metal for two people who mostly argue about jokes. 35+ gongs and counting.</p>
+        </div>
+        <div class="award-board" data-awards></div>
+      </section>
+
+      <!-- CONTACT / FOOTER -->
+      <footer class="contact panel panel--black" id="contact" data-panel="contact">
+        <div class="contact-grid">
+          <p class="eyebrow">(Pester Us)</p>
+          <h2 class="contact-title">Slide in.<br /><em>Professionally.</em></h2>
+          <ul class="contact-links">
+            <li><span>Zac</span><a href="mailto:zacnairn3@gmail.com">zacnairn3@gmail.com</a></li>
+            <li><span>Casey</span><a href="mailto:caseyclarke@outlook.com.au">caseyclarke@outlook.com.au</a></li>
+          </ul>
+          <ul class="contact-social">
+            <li><a href="https://www.linkedin.com/in/zacnairn/" target="_blank" rel="noopener">Zac — LinkedIn ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/casey-clarke/" target="_blank" rel="noopener">Casey — LinkedIn ↗</a></li>
+          </ul>
+        </div>
+        <div class="colophon">
+          <span>Copyrights© 2026</span>
+          <span class="colophon-mark">(Zac&nbsp;&amp;&nbsp;Casey)</span>
+          <span>Curated by © Two humans + two dogs</span>
+          <button class="to-top" type="button" data-to-top>Back to top ↑</button>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js?v=12" defer></script>
+  </body>
+</html>
