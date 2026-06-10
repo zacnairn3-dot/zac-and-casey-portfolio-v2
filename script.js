@@ -11,20 +11,21 @@ const projects = [
     watch: "https://vimeo.com/1195855067",
     awards: ["Spikes Asia ’26 Silver", "AXIS ’26 2× Bronze", "AXIS ’26 3× Finalist", "Bestads Best Print"],
     media: [
-      { type: "image", title: "Newspaper takeover", src: "assets/hard-rated-pursuit-support.jpg" },
-      { type: "embed", title: "Operation Helicopter", src: "https://player.vimeo.com/video/1195854179", poster: "assets/hard-rated-helicopter-hero.jpg" },
       { type: "image", title: "Helicopter banner", src: "assets/hard-rated-helicopter-hero.jpg" },
-      { type: "image", title: "Homecoming street posters", src: "assets/hard-rated-homecoming-support-6.jpg" },
       { type: "embed", title: "The Homecoming — case study", src: "https://player.vimeo.com/video/1195855067", poster: "assets/hard-rated-helicopter-hero.jpg" },
-      { type: "image", title: "Welcome home", src: "assets/hard-rated-welcome-home.jpg" },
-      { type: "image", title: "No.1 RTD result", src: "assets/hard-rated-second-result.png" },
-      { type: "image", title: "Won over New Zealand", src: "assets/hard-rated-result.jpg" }
+      { type: "image", title: "Newspaper takeover", src: "assets/hard-rated-pursuit-support.jpg" },
+      { type: "embed", title: "Operation Helicopter", src: "https://player.vimeo.com/video/1195854179", poster: "assets/hard-rated-helicopter-hero.jpg", autoplay: true },
+      { type: "image", title: "Homecoming street posters", src: "assets/hard-rated-homecoming-support-6.jpg" },
+      { type: "imageGrid", items: [
+        { title: "Welcome home", src: "assets/hard-rated-welcome-home.jpg" },
+        { title: "Won over New Zealand", src: "assets/hard-rated-result.jpg" }
+      ] }
     ]
   },
   {
     id: "wwf", client: "WWF", title: "Give Shane Jones the Finger",
     line: "We got 40,000+ New Zealanders to send a corrupt Oceans and Fisheries Minister the fish finger.",
-    role: "Activation / Protest / Earned", result: "40,000+ public fingers sent.",
+    role: "Activation / Protest / Earned", result: "40,000+ fingers given to Shane.",
     image: "assets/wwf-1.jpg", thumb: "assets/wwf-2.jpg",
     watch: "https://vimeo.com/1110653590",
     awards: ["AXIS ’25 3× Bronze", "AWARD ’25 Bronze", "Webby ’25 Honoree", "Cairns Crocodiles ’25 Bronze"],
@@ -48,19 +49,19 @@ const projects = [
     watch: "https://vimeo.com/1132862636",
     awards: ["Bestads Best Interactive", "AXIS ’26 Finalists", "Mumbrella ’26 Shortlist"],
     media: [
-      { type: "embed", title: "The Sugar Liquidation Sale!", src: "https://player.vimeo.com/video/1132862636", poster: "assets/xlong-video-poster.jpg" },
       { type: "imageGrid", items: [
         { title: "PR mockup", src: "assets/xlong-seq-01.jpg" },
         { title: "Out of home", src: "assets/xlong-seq-03.jpg" }
       ] },
-      { type: "embed", title: "Sugar Liquidation — Dancing", src: "https://player.vimeo.com/video/1132863466", poster: "assets/xlong-dancing-poster.jpg" },
+      { type: "embed", title: "The Sugar Liquidation Sale!", src: "https://player.vimeo.com/video/1132862636", poster: "assets/xlong-video-poster.jpg" },
+      { type: "embed", title: "Sugar Liquidation — Dancing", src: "https://player.vimeo.com/video/1132863466", poster: "assets/xlong-dancing-poster.jpg", autoplay: true },
       { type: "image", title: "The notebook", src: "assets/xlong-seq-04.gif" },
-      { type: "embed", title: "Sugar pour", src: "https://player.vimeo.com/video/1195854720", poster: "assets/xlong-sugar-pour-poster.jpg" },
-      { type: "image", title: "Weekly giveaways", src: "assets/xlong-giveaways.jpeg" },
+      { type: "embed", title: "Sugar pour", src: "https://player.vimeo.com/video/1195854720", poster: "assets/xlong-sugar-pour-poster.jpg", autoplay: true },
       { type: "imageGrid", items: [
-        { title: "Merch", src: "assets/xlong-merch.jpg" },
-        { title: "Sticker system", src: "assets/xlong-support-7.jpg" }
+        { title: "Weekly giveaways", src: "assets/xlong-giveaways.jpeg" },
+        { title: "Merch", src: "assets/xlong-merch.jpg" }
       ] },
+      { type: "image", title: "Sticker system", src: "assets/xlong-support-7.jpg" },
       { type: "image", title: "Playing cards", src: "assets/xlong-playing-cards-box.jpg" }
     ]
   },
@@ -73,14 +74,10 @@ const projects = [
     awards: ["Bestads Best Outdoor"],
     media: [
       { type: "image", title: "Outdoor", src: "assets/realestate-seq-01.jpg" },
-      { type: "imageGrid", items: [
-        { title: "Outdoor", src: "assets/realestate-seq-02.jpg" },
-        { title: "Outdoor", src: "assets/realestate-seq-03.jpg" }
-      ] },
-      { type: "imageGrid", items: [
-        { title: "Outdoor", src: "assets/realestate-seq-04.jpg" },
-        { title: "Outdoor", src: "assets/realestate-seq-05.jpg" }
-      ] }
+      { type: "image", title: "South facing", src: "assets/realestate-seq-02.jpg" },
+      { type: "image", title: "Surprise", src: "assets/realestate-seq-04.jpg" },
+      { type: "image", title: "Next door", src: "assets/realestate-seq-03.jpg" },
+      { type: "image", title: "New friend", src: "assets/realestate-seq-05.jpg" }
     ]
   },
   {
@@ -146,9 +143,9 @@ const projects = [
     media: [
       { type: "image", title: "Meet Margaret", src: "assets/bulla-seq-01.png" },
       { type: "embed", title: "Bulla on Gruen", src: "https://player.vimeo.com/video/951795401", poster: "assets/bulla-1.jpg" },
-      { type: "embed", title: "Intro", src: "https://player.vimeo.com/video/1059403358", poster: "assets/bulla-intro-poster.jpg", orientation: "portrait" },
-      { type: "embed", title: "POV", src: "https://player.vimeo.com/video/1059403352", poster: "assets/bulla-pov-poster.jpg", orientation: "portrait" },
-      { type: "embed", title: "Eat in a Day", src: "https://player.vimeo.com/video/1059403329", poster: "assets/bulla-eat-poster.jpg", orientation: "portrait" }
+      { type: "embed", title: "Intro", src: "https://player.vimeo.com/video/1059403358", poster: "assets/bulla-intro-poster.jpg", orientation: "portrait", autoplay: true },
+      { type: "embed", title: "POV", src: "https://player.vimeo.com/video/1059403352", poster: "assets/bulla-pov-poster.jpg", orientation: "portrait", autoplay: true },
+      { type: "embed", title: "Eat in a Day", src: "https://player.vimeo.com/video/1059403329", poster: "assets/bulla-eat-poster.jpg", orientation: "portrait", autoplay: true }
     ]
   }
 ];
@@ -216,11 +213,19 @@ function mediaImage(item, cls) {
 }
 function mediaEmbed(item) {
   const portrait = item.orientation === "portrait";
-  const src = `${item.src}?title=0&byline=0&portrait=0&dnt=1`;
   // Use the video's real Vimeo thumbnail (downloaded to assets/vimeo-<id>.jpg) so the
   // static frame always matches the actual video; fall back to a curated poster if needed.
   const vid = item.src.match(/\/video\/(\d+)/)?.[1];
   const poster = vid ? `assets/vimeo-${vid}.jpg` : item.poster;
+  if (item.autoplay) {
+    // ambient autoplaying video — muted, looping (Vimeo background mode) + a custom unmute toggle
+    const asrc = `${item.src}?background=1&autoplay=1&muted=1&loop=1&dnt=1`;
+    return `<div class="video ${portrait ? "video--portrait" : ""} is-loaded">
+      <iframe src="${asrc}" title="${esc(item.title || "video")}" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <button class="video-sound" type="button" aria-label="Unmute video">Unmute</button>
+    </div>`;
+  }
+  const src = `${item.src}?title=0&byline=0&portrait=0&dnt=1`;
   return `<div class="video ${portrait ? "video--portrait" : ""}" data-video="${src}" role="button" tabindex="0" aria-label="Play ${esc(item.title || "video")}">
       <img class="video-poster" src="${poster}" alt="" loading="lazy" decoding="async" />
       <span class="video-play"><span>▶</span></span>
@@ -300,7 +305,6 @@ function renderCases() {
       <div class="case-head">
         <p class="case-top" data-reveal>
           <span class="case-client">${esc(p.client)}</span>
-          <span>(${num} / ${TOTAL}) — ${esc(p.role)}</span>
         </p>
         <h2 class="case-title" data-reveal><span>${esc(p.title)}</span><span class="case-index">(${num})</span></h2>
         <div class="case-info">
@@ -313,7 +317,6 @@ function renderCases() {
         ${p.awards?.length ? `<div class="case-awards" data-reveal data-delay="2"><span class="label">Hardware</span>${p.awards.map((a) => `<span class="tag">${esc(a)}</span>`).join("")}</div>` : ""}
       </div>
       <div class="case-media" data-reveal data-delay="1">${renderMedia(p)}</div>
-      <div class="case-foot"><span>Zac &amp; Casey © 2026</span><span>${esc(p.client)} — (${num} / ${TOTAL})</span></div>
     </section>`;
   }).join("");
 }
@@ -401,22 +404,85 @@ function initWorklistPreview() {
 }
 
 function initVideos() {
-  document.querySelectorAll("[data-video]").forEach((box) => {
-    box.addEventListener("click", () => {
+  const boxes = [...document.querySelectorAll(".video")];
+  if (!boxes.length) return;
+  const entries = []; // { box, player, sound, muted }
+  let io = null;
+
+  // mute/unmute an ambient autoplay loop and reflect it on its button
+  const setAutoplayMuted = (entry, muted) => {
+    if (!entry || entry.sound) return;
+    entry.muted = muted;
+    if (muted) entry.player.setMuted(true).catch(() => {});
+    else entry.player.setMuted(false).then(() => entry.player.setVolume(1)).catch(() => {});
+    entry.box.classList.toggle("sound-on", !muted);
+    const b = entry.box.querySelector(".video-sound");
+    if (b) { b.textContent = muted ? "Unmute" : "Mute"; b.setAttribute("aria-label", muted ? "Unmute video" : "Mute video"); }
+  };
+
+  // exactly one source may have audio — pause sound videos, mute ambient loops
+  const claimAudio = (except) => entries.forEach((e) => {
+    if (e.player === except) return;
+    if (e.sound) e.player.pause().catch(() => {});
+    else if (e.muted === false) setAutoplayMuted(e, true);
+  });
+
+  const register = (box, iframe, sound) => {
+    if (!window.Vimeo?.Player || entries.find((e) => e.box === box)) return;
+    const player = new Vimeo.Player(iframe);
+    const entry = { box, player, sound, muted: true };
+    entries.push(entry);
+    if (sound) player.on("play", () => claimAudio(player));
+    const soundBtn = box.querySelector(".video-sound");
+    if (soundBtn) soundBtn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      if (entry.muted === false) setAutoplayMuted(entry, true);
+      else { claimAudio(player); setAutoplayMuted(entry, false); }
+    });
+    io?.observe(box);
+  };
+
+  // click-to-play (sound) — works regardless of the SDK
+  boxes.forEach((box) => {
+    if (!box.dataset.video) return;
+    const open = () => {
       if (box.classList.contains("is-loaded")) return;
-      const src = box.dataset.video + "&autoplay=1";
+      claimAudio(null); // stop any audio already playing
       const iframe = document.createElement("iframe");
-      iframe.src = src;
-      iframe.title = box.querySelector(".video-label")?.textContent || "Video";
+      iframe.src = box.dataset.video + "&autoplay=1";
+      iframe.title = box.getAttribute("aria-label") || "Video";
       iframe.allow = "autoplay; fullscreen; picture-in-picture";
       iframe.setAttribute("allowfullscreen", "");
       box.appendChild(iframe);
       box.classList.add("is-loaded");
-    });
-    box.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); box.click(); }
-    });
+      register(box, iframe, true);
+    };
+    box.addEventListener("click", open);
+    box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
   });
+
+  // load the Vimeo SDK to manage cross-pausing + pause/resume on scroll
+  const sdk = document.createElement("script");
+  sdk.src = "https://player.vimeo.com/api/player.js";
+  sdk.onload = () => {
+    if (!window.Vimeo?.Player) return;
+    if ("IntersectionObserver" in window) {
+      io = new IntersectionObserver((obs) => {
+        obs.forEach((o) => {
+          const entry = entries.find((x) => x.box === o.target);
+          if (!entry) return;
+          if (o.isIntersecting) { if (!entry.sound) entry.player.play().catch(() => {}); } // resume muted loops
+          else { entry.player.pause().catch(() => {}); if (!entry.sound) setAutoplayMuted(entry, true); } // pause + re-mute on exit
+        });
+      }, { threshold: 0.2 });
+    }
+    // register any already-loaded iframes (ambient autoplay loops + anything clicked before the SDK arrived)
+    boxes.forEach((box) => {
+      const iframe = box.querySelector("iframe");
+      if (box.classList.contains("is-loaded") && iframe) register(box, iframe, !!box.dataset.video);
+    });
+  };
+  document.head.appendChild(sdk);
 }
 
 function fmtTime(v) {
