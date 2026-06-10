@@ -44,7 +44,7 @@ const projects = [
   {
     id: "x-long-white", client: "X by Long White", title: "The Sugar Liquidation Sale!",
     line: "We turned the sugar Long White left out of its new RTD, X, into a full-blown mid-90s sugar sale — starring our deranged salesman, Gary.",
-    role: "Launch Platform / Film / Social", result: "Gary lived. Sugar moved.",
+    role: "Launch Platform / Film / Social", result: "Gary lived, and sold unused sugar.",
     image: "assets/xlong-1.jpg", thumb: "assets/xlong-2.jpg",
     watch: "https://vimeo.com/1132862636",
     awards: ["Bestads Best Interactive", "AXIS ’26 Finalists", "Mumbrella ’26 Shortlist"],
@@ -136,7 +136,7 @@ const projects = [
   {
     id: "bulla", client: "Bulla Family Dairy", title: "Chief Cottage Cheese Officer",
     line: "We created a lovable, cringeworthy cottage-cheese influencer for Australia’s most beloved dairy company. She blew up on the TikToks, landed on The Gruen Transfer, and even earned real media for selling too much cottage cheese.",
-    role: "Character / Social / Earned", result: "TikTok heat and Gruen airtime.",
+    role: "Character / Social / Earned", result: "Sold too much cottage cheese.",
     image: "assets/bulla-1.jpg", thumb: "assets/bulla-2.png",
     watch: "https://vimeo.com/951795401",
     awards: ["B&T ’24 Best Digital — Winner", "B&T ’24 Bravery Finalist", "B&T ’24 Social Finalist", "AWARD ’25 Finalist"],
