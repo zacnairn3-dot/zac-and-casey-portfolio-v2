@@ -285,7 +285,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 }
 .hero-plate {
   grid-column: 2; justify-self: end; align-self: end;
-  width: clamp(170px, 16vw, 300px);
+  width: calc(clamp(170px, 16vw, 300px) * 1.15); /* Cannes plate +15% */
   border: 1px solid var(--rule); background: rgba(255,255,255,0.04);
   animation: plate-float 8.5s ease-in-out infinite alternate;
   will-change: transform; backface-visibility: hidden; /* composite the floating plate so the thin outline stays crisp */
