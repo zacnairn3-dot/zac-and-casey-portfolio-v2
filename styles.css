@@ -456,7 +456,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   background: rgba(255,255,255,0.92); color: #000; font-size: clamp(15px, 1.5vw, 22px); padding-left: 3px;
   transition: transform 0.4s var(--ease), background-color 0.3s;
 }
-.video:hover .video-play span { transform: scale(1.08); background: var(--red); color: #fff; }
+.video:hover .video-play span { transform: scale(1.08); background: var(--hero-accent); color: #fff; }
 /* overscan a few px so the iframe's sub-pixel letterbox bars are clipped — video sits flush to the frame, no black/white slivers */
 .video iframe { position: absolute; top: -3px; left: -3px; width: calc(100% + 6px); height: calc(100% + 6px); border: 0; }
 .video.is-loaded .video-poster, .video.is-loaded .video-play { opacity: 0; pointer-events: none; }
