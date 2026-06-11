@@ -436,6 +436,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .media-unit { position: relative; grid-column: span 12; overflow: hidden; background: rgba(0,0,0,0.06); border: 1px solid var(--rule); }
 .panel--black .media-unit, .panel--red .media-unit, .panel--gray .media-unit, .panel--tint-dark .media-unit { background: rgba(0,0,0,0.22); }
 .media-unit--half { grid-column: span 6; }
+.media-unit--portrait { grid-column: span 12; width: 100%; max-width: 600px; justify-self: center; } /* portrait posters: centred + capped, not full-bleed */
 .media-unit img { width: 100%; height: 100%; object-fit: cover; }
 .media-cap { position: absolute; left: 10px; bottom: 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); padding: 4px 8px; backdrop-filter: blur(4px); opacity: 0; transform: translateY(6px); transition: opacity 0.35s, transform 0.35s var(--ease); }
 .media-unit:hover .media-cap { opacity: 1; transform: translateY(0); }

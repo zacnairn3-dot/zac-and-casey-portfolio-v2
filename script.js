@@ -109,7 +109,7 @@ const projects = [
         { title: "OOH", src: "assets/nougly-seq-02.jpg" },
         { title: "Mockup", src: "assets/nougly-seq-03.jpg" }
       ] },
-      { type: "image", title: "Press", src: "assets/nougly-seq-04.jpg" },
+      { type: "image", title: "Press", src: "assets/nougly-seq-04.jpg", portrait: true },
       { type: "image", title: "OOH", src: "assets/nougly-seq-05.jpg" }
     ]
   },
@@ -281,7 +281,7 @@ function renderMedia(project) {
     }
 
     if (item.type === "image") {
-      out.push(mediaImage(item, "")); // single images render full-width, matching the reference site
+      out.push(mediaImage(item, item.portrait ? "media-unit--portrait" : "")); // portrait posters render centred + capped, not full-bleed
       i += 1; continue;
     }
     i += 1;
