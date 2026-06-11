@@ -303,6 +303,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   --dog-mouth-x: 50%; --dog-mouth-y: 66%; --dog-mouth-width: 12%; --dog-mouth-height: 4%; --dog-mouth-rotate: 0deg;
   position: absolute; z-index: 6; width: clamp(82px, 9vw, 150px);
   cursor: pointer; opacity: 0; transition: opacity 0.9s ease 0.5s;
+  will-change: transform; backface-visibility: hidden; /* composite the floating dogs so the drop-shadow doesn't smear/glitch over the title */
 }
 .hero.is-in .hero-dog { opacity: 1; }
 .hero-dog img { position: relative; z-index: 1; width: 100%; display: block; pointer-events: none; filter: drop-shadow(0 12px 26px rgba(0,0,0,0.55)); }
@@ -614,4 +615,5 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   .case-top { flex-direction: column; gap: 6px; }
   .contact-title { font-size: clamp(30px, 10vw, 56px); } /* keep "Professionally." on one line on phones */
   .hero-marks { display: none; } /* mobile declutter: the lead already says "an Aussie team hiding out in NZ" */
+  .hero-dog img { filter: drop-shadow(0 3px 8px rgba(0,0,0,0.3)); } /* tighter shadow so Neal doesn't smudge the white title on phones */
 }
