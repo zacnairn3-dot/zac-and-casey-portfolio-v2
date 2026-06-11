@@ -159,7 +159,7 @@ const awardsData = [
   { org: "Bestads", wide: true, items: [["Best Radio", "Black Heart — Shanty for Missing Chums"], ["Best Interactive", "X by Long White"], ["Best Interactive", "Post-it"], ["Best Print", "Hard Rated Official Apology"], ["Best Outdoor", "No Ugly Gut"], ["Best Outdoor", "realestate.co.nz Flatmates"]] }
 ];
 
-const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×11", "Art Direction", "Copywriting", "Misc. Trouble"];
+const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×11", "Art Direction", "Copywriting"];
 
 /* signature colour per project — drives a duotone tint for each panel + its index hover */
 const tones = {
