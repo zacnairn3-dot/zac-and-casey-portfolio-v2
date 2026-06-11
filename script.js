@@ -608,27 +608,69 @@ function initAudio() {
   });
 }
 
+// Robust in-page jump: land the section at the top, then keep it pinned while
+// lazy images ABOVE it finish loading and grow the page — otherwise an instant
+// jump lands on a stale position and you end up short of (or past) the project.
+// Bails the moment the user scrolls themselves, so it never fights them.
+let cancelJump = null;
+function jumpTo(target) {
+  if (!target) return;
+  if (cancelJump) cancelJump();
+  const land = () => target.scrollIntoView({ behavior: "instant", block: "start" });
+  land();
+  const pending = [...document.images].filter((im) => !im.complete);
+  if (!pending.length) return;
+  let active = true, remaining = pending.length;
+  const stop = () => {
+    if (!active) return;
+    active = false;
+    pending.forEach((im) => { im.removeEventListener("load", onSettle); im.removeEventListener("error", onSettle); });
+    ["wheel", "touchmove", "keydown"].forEach((ev) => window.removeEventListener(ev, stop, true));
+    clearTimeout(timer);
+    cancelJump = null;
+  };
+  const onSettle = () => { if (!active) return; land(); if (--remaining <= 0) stop(); };
+  pending.forEach((im) => { im.addEventListener("load", onSettle); im.addEventListener("error", onSettle); });
+  ["wheel", "touchmove", "keydown"].forEach((ev) => window.addEventListener(ev, stop, true));
+  const timer = setTimeout(stop, 10000); // safety net; normally stops once all pending images settle
+  cancelJump = stop;
+}
+function hrefTarget(a) {
+  const href = a.getAttribute("href") || "";
+  return href.startsWith("#") && href.length > 1 ? document.getElementById(href.slice(1)) : null;
+}
+
 function initNav() {
   const toggle = document.querySelector(".menu-toggle");
   const overlay = document.querySelector("[data-overlay]");
-  if (!toggle || !overlay) return;
-  overlay.hidden = false;
   const setOpen = (open) => {
+    if (!toggle) return;
     document.body.classList.toggle("nav-open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.querySelector(".menu-toggle-text").textContent = open ? "Close" : "Index";
   };
-  toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("nav-open")));
-  document.querySelectorAll("[data-overlay-link]").forEach((a) => a.addEventListener("click", (e) => {
-    const href = a.getAttribute("href") || "";
-    const target = href.startsWith("#") && href.length > 1 ? document.getElementById(href.slice(1)) : null;
-    setOpen(false);
-    if (target) { // jump the project flush to the top, INSTANTLY — a smooth scroll travels through the page and trips lazy images mid-flight, which shifts the target and lands you mid-section on mobile
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "instant", block: "start" });
-    }
-  }));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  if (toggle && overlay) {
+    overlay.hidden = false;
+    toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("nav-open")));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  }
+  // both the slide-in overlay AND the on-page work index point at the same sections
+  document.querySelectorAll("[data-overlay-link], .worklist-row").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const target = hrefTarget(a);
+      if (a.matches("[data-overlay-link]")) setOpen(false);
+      if (target) {
+        e.preventDefault();
+        history.replaceState(null, "", a.getAttribute("href"));
+        jumpTo(target);
+      }
+    });
+  });
+  // a deep link landing straight on #project needs the same anti-shift treatment
+  if (location.hash.length > 1) {
+    const el = document.getElementById(location.hash.slice(1));
+    if (el) requestAnimationFrame(() => jumpTo(el));
+  }
 }
 
 function initToTop() {
