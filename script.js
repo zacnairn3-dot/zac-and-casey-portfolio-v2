@@ -219,7 +219,7 @@ function mediaEmbed(item) {
     return `<div class="video ${portrait ? "video--portrait" : ""} is-loaded">
       <iframe src="${asrc}" title="${esc(item.title || "video")}" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
       <div class="video-controls">
-        <button class="video-restart" type="button" aria-label="Restart from the beginning"><span aria-hidden="true">↺</span></button>
+        <button class="video-restart" type="button" aria-label="Restart from the beginning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
         <button class="video-sound" type="button" aria-label="Unmute video">Unmute</button>
       </div>
     </div>`;
@@ -576,7 +576,15 @@ function initNav() {
     toggle.querySelector(".menu-toggle-text").textContent = open ? "Close" : "Index";
   };
   toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("nav-open")));
-  document.querySelectorAll("[data-overlay-link]").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.querySelectorAll("[data-overlay-link]").forEach((a) => a.addEventListener("click", (e) => {
+    const href = a.getAttribute("href") || "";
+    const target = href.startsWith("#") && href.length > 1 ? document.getElementById(href.slice(1)) : null;
+    setOpen(false);
+    if (target) { // jump the project flush to the top, INSTANTLY — a smooth scroll travels through the page and trips lazy images mid-flight, which shifts the target and lands you mid-section on mobile
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "instant", block: "start" });
+    }
+  }));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
 }
 
