@@ -355,6 +355,35 @@ function initReveal() {
   targets.forEach((t) => io.observe(t));
 }
 
+function initFaviconCycle() {
+  const link = document.querySelector('link[rel="icon"]');
+  const canvas = document.createElement("canvas");
+  if (!link || !canvas.getContext) return;
+  canvas.width = canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+  // the 8 project tones, in the same order as the hero-hue keyframes
+  const TONES = ["#b3741a", "#1c7d57", "#8e3cc7", "#1f6fb8", "#8c2747", "#c8463a", "#c8930c", "#2f8fb5"];
+  let i = 0;
+  const draw = () => {
+    const color = TONES[i++ % TONES.length];
+    ctx.clearRect(0, 0, 64, 64);
+    ctx.fillStyle = "#0c0c0c";
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(0, 0, 64, 64, 14); ctx.fill(); }
+    else ctx.fillRect(0, 0, 64, 64);
+    ctx.fillStyle = color;
+    ctx.font = "800 46px 'Bricolage Grotesque', 'Helvetica Neue', sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("&", 32, 35);
+    link.type = "image/png";
+    link.href = canvas.toDataURL("image/png");
+  };
+  // wait for the web font so the glyph is rendered in Bricolage, not a fallback
+  const start = () => { draw(); if (!reduceMotion) setInterval(draw, 2000); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  else start();
+}
+
 function initHud() {
   const hudIndex = document.querySelector("[data-hud-index]");
   const hudLabel = document.querySelector("[data-hud-label]");
@@ -646,6 +675,7 @@ initVideos();
 initAudio();
 initNav();
 initToTop();
+initFaviconCycle();
 wireDogBarks();
 
 // hero entrance on load
