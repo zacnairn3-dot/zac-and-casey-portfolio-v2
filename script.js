@@ -51,6 +51,7 @@ const projects = [
     media: [
       { type: "embed", title: "The Sugar Liquidation Sale!", src: "https://player.vimeo.com/video/1132862636", poster: "assets/xlong-video-poster.jpg" },
       { type: "image", title: "PR mockup", src: "assets/xlong-seq-01.jpg" },
+      { type: "image", title: "Out of home", src: "assets/xlong-seq-02.jpg" },
       { type: "image", title: "Out of home", src: "assets/xlong-seq-03.jpg" },
       { type: "embed", title: "Sugar Liquidation — Dancing", src: "https://player.vimeo.com/video/1132863466", poster: "assets/xlong-dancing-poster.jpg", autoplay: true },
       { type: "image", title: "The notebook", src: "assets/xlong-seq-04.gif" },
