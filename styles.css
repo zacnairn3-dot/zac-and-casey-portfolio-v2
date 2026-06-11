@@ -182,15 +182,15 @@ sup { font-size: 0.5em; vertical-align: super; }
 
 .menu-toggle {
   position: fixed; top: 12px; right: var(--pad); z-index: 900;
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; gap: 12px;
   background: var(--white); color: var(--ink);
   border: none; border-radius: 999px; cursor: pointer;
-  padding: 10px 16px; font-family: var(--mono); font-size: 12px;
+  padding: 13px 22px; font-family: var(--mono); font-size: 14px;
   letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
   transition: transform 0.4s var(--ease), background-color 0.3s, color 0.3s;
 }
 .menu-toggle:hover { transform: translateY(-2px); }
-.menu-toggle-bars { display: inline-grid; gap: 4px; width: 16px; }
+.menu-toggle-bars { display: inline-grid; gap: 5px; width: 20px; }
 .menu-toggle-bars i { height: 2px; background: currentColor; transition: transform 0.4s var(--ease), opacity 0.3s; }
 body.nav-open .menu-toggle { background: var(--hero-accent); color: #fff; }
 body.nav-open .menu-toggle-bars i:first-child { transform: translateY(3px) rotate(45deg); }
