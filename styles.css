@@ -221,8 +221,14 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   transition: color 0.3s, padding-left 0.4s var(--ease);
 }
 .overlay-list a::before { content: "0" counter(ov); font-family: var(--mono); font-size: 0.26em; font-weight: 500; color: rgba(255,255,255,0.45); align-self: center; }
-.overlay-list a:hover { color: var(--hero-accent); padding-left: clamp(8px, 1.5vw, 24px); } /* hover cycles with the palette */
-.overlay-list a:hover::before { color: var(--hero-accent); }
+/* self-contained palette cycle: every link (incl. the first) visibly rotates, without depending on an
+   inherited animated custom property through a transition — which some browsers latch on a held hover */
+@keyframes overlay-link-hue {
+  0%    { color: #b3741a; } 12.5% { color: #1c7d57; } 25%   { color: #8e3cc7; } 37.5% { color: #1f6fb8; }
+  50%   { color: #8c2747; } 62.5% { color: #c8463a; } 75%   { color: #c8930c; } 87.5% { color: #2f8fb5; } 100% { color: #b3741a; }
+}
+.overlay-list a:hover { color: var(--hero-accent); animation: overlay-link-hue 8s linear infinite; padding-left: clamp(8px, 1.5vw, 24px); }
+.overlay-list a:hover::before { color: var(--hero-accent); animation: overlay-link-hue 8s linear infinite; }
 .overlay-list a small { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); margin-left: auto; text-transform: none; }
 .overlay-foot { display: flex; flex-wrap: wrap; gap: 28px; margin-top: clamp(28px, 5vh, 64px); font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
 .overlay-foot a { color: rgba(255,255,255,0.7); transition: color 0.3s; }
@@ -579,6 +585,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   .worklist-preview { display: none !important; }
   .hero-dog--lola, .hero-dog--neal, .hero-dog-mouth, .hero-dog img, .hero-plate { animation: none !important; }
   html, .hero { animation: none !important; }
+  .overlay-list a:hover, .overlay-list a:hover::before { animation: none !important; }
 }
 
 /* =============================================================
