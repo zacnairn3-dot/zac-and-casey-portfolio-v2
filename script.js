@@ -669,6 +669,10 @@ function wireDogBarks() {
     .map(([sel, kind]) => { const dog = document.querySelector(sel); return dog ? { dog, kind } : null; })
     .filter(Boolean);
   if (!dogs.length) return;
+  // Browsers keep the AudioContext suspended until a real user gesture — hovering/moving doesn't count,
+  // so the bark stays silent until the page is clicked. Unlock it on the first interaction anywhere.
+  const unlockAudio = () => { const ctx = getDogAudioContext(); if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {}); };
+  ["pointerdown", "touchstart", "keydown"].forEach((ev) => window.addEventListener(ev, unlockAudio, { passive: true }));
   const setHover = (dog, kind, hovered) => {
     const was = dog.classList.contains("is-dog-hovered");
     dog.classList.toggle("is-dog-hovered", hovered);
