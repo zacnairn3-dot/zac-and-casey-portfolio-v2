@@ -214,11 +214,14 @@ function mediaEmbed(item) {
   const vid = item.src.match(/\/video\/(\d+)/)?.[1];
   const poster = vid ? `assets/vimeo-${vid}.jpg` : item.poster;
   if (item.autoplay) {
-    // ambient autoplaying video — muted, looping (Vimeo background mode) + a custom unmute toggle
+    // ambient autoplaying video — muted, looping (Vimeo background mode) + custom restart / unmute controls
     const asrc = `${item.src}?background=1&autoplay=1&muted=1&loop=1&dnt=1`;
     return `<div class="video ${portrait ? "video--portrait" : ""} is-loaded">
       <iframe src="${asrc}" title="${esc(item.title || "video")}" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <button class="video-sound" type="button" aria-label="Unmute video">Unmute</button>
+      <div class="video-controls">
+        <button class="video-restart" type="button" aria-label="Restart from the beginning"><span aria-hidden="true">↺</span></button>
+        <button class="video-sound" type="button" aria-label="Unmute video">Unmute</button>
+      </div>
     </div>`;
   }
   const src = `${item.src}?title=0&byline=0&portrait=0&dnt=1`;
@@ -464,6 +467,11 @@ function initVideos() {
       if (entry.muted === false) setAutoplayMuted(entry, true);
       else { claimAudio(player); setAutoplayMuted(entry, false); }
     });
+    const restartBtn = box.querySelector(".video-restart");
+    if (restartBtn) restartBtn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      player.setCurrentTime(0).then(() => player.play()).catch(() => {});
+    });
     io?.observe(box);
   };
 
@@ -481,6 +489,13 @@ function initVideos() {
       box.appendChild(iframe);
       box.classList.add("is-loaded");
       register(box, iframe, true);
+      // the click is a user gesture, so start with sound straight away — no second "unmute" tap
+      const entry = entries.find((e) => e.box === box);
+      entry?.player.ready().then(() => {
+        entry.player.setMuted(false).catch(() => {});
+        entry.player.setVolume(1).catch(() => {});
+        entry.player.play().catch(() => {});
+      }).catch(() => {});
     };
     box.addEventListener("click", open);
     box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
