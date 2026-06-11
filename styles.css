@@ -192,7 +192,7 @@ sup { font-size: 0.5em; vertical-align: super; }
 .menu-toggle:hover { transform: translateY(-2px); }
 .menu-toggle-bars { display: inline-grid; gap: 4px; width: 16px; }
 .menu-toggle-bars i { height: 2px; background: currentColor; transition: transform 0.4s var(--ease), opacity 0.3s; }
-body.nav-open .menu-toggle { background: var(--red); color: #fff; }
+body.nav-open .menu-toggle { background: var(--hero-accent); color: #fff; }
 body.nav-open .menu-toggle-bars i:first-child { transform: translateY(3px) rotate(45deg); }
 body.nav-open .menu-toggle-bars i:last-child { transform: translateY(-3px) rotate(-45deg); }
 
@@ -208,7 +208,8 @@ body.nav-open .menu-toggle-bars i:last-child { transform: translateY(-3px) rotat
 }
 body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .overlay[hidden] { display: grid; }
-.overlay-inner { width: min(100%, var(--maxw)); padding: 0 var(--pad); }
+.overlay::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(58% 42% at 82% 12%, var(--hero-accent), transparent 70%); opacity: 0.16; } /* accent glow, echoing the hero */
+.overlay-inner { position: relative; z-index: 1; width: min(100%, var(--maxw)); padding: 0 var(--pad); }
 .overlay-kicker { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
 .overlay-list { list-style: none; counter-reset: ov; }
 .overlay-list li { counter-increment: ov; border-top: 1px solid rgba(255,255,255,0.14); }
@@ -220,11 +221,12 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   transition: color 0.3s, padding-left 0.4s var(--ease);
 }
 .overlay-list a::before { content: "0" counter(ov); font-family: var(--mono); font-size: 0.26em; font-weight: 500; color: rgba(255,255,255,0.45); align-self: center; }
-.overlay-list a:hover { color: #ff5b4d; padding-left: clamp(8px, 1.5vw, 24px); }
+.overlay-list a:hover { color: var(--hero-accent); padding-left: clamp(8px, 1.5vw, 24px); } /* hover cycles with the palette */
+.overlay-list a:hover::before { color: var(--hero-accent); }
 .overlay-list a small { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); margin-left: auto; text-transform: none; }
 .overlay-foot { display: flex; flex-wrap: wrap; gap: 28px; margin-top: clamp(28px, 5vh, 64px); font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
 .overlay-foot a { color: rgba(255,255,255,0.7); transition: color 0.3s; }
-.overlay-foot a:hover { color: #fff; }
+.overlay-foot a:hover { color: var(--hero-accent); }
 
 /* =============================================================
    HERO
@@ -361,8 +363,9 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 /* =============================================================
    WORK INDEX
    ============================================================= */
-.index { position: relative; }
-.worklist { list-style: none; max-width: var(--maxw); margin: clamp(40px, 6vh, 90px) auto 0; border-top: 1px solid var(--rule); }
+.index { position: relative; background: color-mix(in srgb, var(--hero-accent) 16%, var(--paper)); transition: none; } /* paper tint that cycles with the palette */
+.index .paren { color: var(--hero-accent); white-space: nowrap; } /* paren cycles like the hero; keep (001-008) intact */
+.worklist { list-style: none; max-width: var(--maxw); margin: clamp(40px, 6vh, 90px) auto 0; border-top: 3px solid var(--hero-accent); } /* bold accent rule ties the index to the palette */
 .worklist-row {
   position: relative; border-bottom: 1px solid var(--rule);
   display: grid; grid-template-columns: clamp(64px, 8vw, 116px) 1fr auto; align-items: center;
@@ -372,7 +375,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   transition: padding 0.5s var(--ease), color 0.4s;
 }
 .worklist-row::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--accent);
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--hero-accent);
   transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s var(--ease);
 }
 .worklist-row:hover { padding-left: clamp(14px, 1.6vw, 30px); padding-right: clamp(14px, 1.6vw, 30px); color: #fff; }
@@ -522,13 +525,16 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
    CONTACT
    ============================================================= */
 .contact { display: flex; flex-direction: column; }
+.contact::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(55% 50% at 72% 26%, var(--hero-accent), transparent 70%); opacity: 0.15; } /* accent glow, echoing the hero */
+.contact-grid, .colophon { position: relative; z-index: 1; }
+.contact-title em { color: var(--hero-accent); } /* cycles like the hero ampersand */
 .contact-grid { max-width: var(--maxw); margin: 0 auto; width: 100%; }
 .contact-title { font-weight: 800; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.035em; font-size: clamp(38px, 8.8vw, 150px); margin: 0.12em 0 0; }
 .contact-links { list-style: none; display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 90px); margin-top: clamp(32px, 5vw, 72px); }
 .contact-links li { display: grid; gap: 6px; }
 .contact-links span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); }
 .contact-links a { font-size: clamp(20px, 2.6vw, 44px); font-weight: 700; letter-spacing: -0.02em; border-bottom: 2px solid var(--rule); transition: border-color 0.3s, color 0.3s; }
-.contact-links a:hover { color: #ff5b4d; border-color: #ff5b4d; }
+.contact-links a:hover { color: var(--hero-accent); border-color: var(--hero-accent); }
 .contact-links a.contact-secondary { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); border-bottom: none; }
 .contact-links a.contact-secondary:hover { color: #fff; }
 .contact-social { list-style: none; display: flex; gap: 28px; flex-wrap: wrap; margin-top: 28px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); }
@@ -585,5 +591,5 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   .award-board { column-count: 1; }
   .video--portrait { grid-column: span 12; }
   .case-top { flex-direction: column; gap: 6px; }
-  .contact-title { font-size: clamp(44px, 16vw, 90px); }
+  .contact-title { font-size: clamp(30px, 10vw, 56px); } /* keep "Professionally." on one line on phones */
 }

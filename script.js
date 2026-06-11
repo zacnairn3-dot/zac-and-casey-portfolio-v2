@@ -49,18 +49,13 @@ const projects = [
     watch: "https://vimeo.com/1132862636",
     awards: ["Bestads Best Interactive", "AXIS ’26 Finalists", "Mumbrella ’26 Shortlist"],
     media: [
-      { type: "imageGrid", items: [
-        { title: "PR mockup", src: "assets/xlong-seq-01.jpg" },
-        { title: "Out of home", src: "assets/xlong-seq-03.jpg" }
-      ] },
       { type: "embed", title: "The Sugar Liquidation Sale!", src: "https://player.vimeo.com/video/1132862636", poster: "assets/xlong-video-poster.jpg" },
+      { type: "image", title: "PR mockup", src: "assets/xlong-seq-01.jpg" },
+      { type: "image", title: "Out of home", src: "assets/xlong-seq-03.jpg" },
       { type: "embed", title: "Sugar Liquidation — Dancing", src: "https://player.vimeo.com/video/1132863466", poster: "assets/xlong-dancing-poster.jpg", autoplay: true },
       { type: "image", title: "The notebook", src: "assets/xlong-seq-04.gif" },
       { type: "embed", title: "Sugar pour", src: "https://player.vimeo.com/video/1195854720", poster: "assets/xlong-sugar-pour-poster.jpg", autoplay: true },
-      { type: "imageGrid", items: [
-        { title: "Weekly giveaways", src: "assets/xlong-giveaways.jpeg" },
-        { title: "Merch", src: "assets/xlong-merch.jpg" }
-      ] },
+      { type: "image", title: "Merch", src: "assets/xlong-merch-grid.jpg" },
       { type: "image", title: "Sticker system", src: "assets/xlong-support-7.jpg" },
       { type: "image", title: "Playing cards", src: "assets/xlong-playing-cards-box.jpg" }
     ]
@@ -68,7 +63,7 @@ const projects = [
   {
     id: "realestate", client: "Realestate.co.nz", title: "Your Next Rental Starts Here",
     line: "We highlighted all the reasons renters move — to show that finding your next rental starts at Realestate.co.nz.",
-    role: "OOH / Print / Platform", result: "Renting, made painfully legible.",
+    role: "OOH / Print / Platform", result: "Renters felt seen and heard.",
     image: "assets/realestate-1.jpg", thumb: "assets/realestate-2.jpg",
     watch: "https://zacandcasey.com/realestate-co-nz",
     awards: ["Bestads Best Outdoor"],
@@ -83,7 +78,7 @@ const projects = [
   {
     id: "black-heart", client: "Black Heart Rum", title: "The Shanty for Missing Chums",
     line: "We rewrote a sea shanty to drag flaky mates out of group-chat purgatory and into the night.",
-    role: "Audio / Radio / Craft", result: "Best Radio, plus a haul of AXIS metal.",
+    role: "Audio / Radio / Craft", result: "The hermits left their caves.",
     image: "assets/black-heart-award-board.jpg", thumb: "assets/black-heart-pirate-full-song.png",
     watch: "https://www.bestadsontv.com/best/radio",
     awards: ["AXIS ’26 Silver", "AXIS ’26 2× Bronze", "Bestads Best Radio"],
@@ -102,7 +97,7 @@ const projects = [
   {
     id: "no-ugly", client: "No Ugly Gut", title: "Beauty is Gut Deep",
     line: "We turned probiotic bacteria into works of art for a wellness drink brand called No Ugly Gut.",
-    role: "Design / OOH / Film", result: "Bacteria, but gallery-lit.",
+    role: "Design / OOH / Film", result: "Bacteria worth staring at.",
     image: "assets/nougly-video-poster.jpg", thumb: "assets/nougly-2.jpg",
     watch: "https://vimeo.com/1110651390",
     awards: ["AXIS ’25 2× Silver", "AXIS ’25 2× Bronze"],
@@ -120,7 +115,7 @@ const projects = [
   {
     id: "post-it", client: "Post-it", title: "A Little Space to Think",
     line: "We made the humble note relevant again, when the world was glued to screens in COVID lockdown.",
-    role: "Film / Digital / Participation", result: "A tiny square got roomy again.",
+    role: "Film / Digital / Participation", result: "People reached for a pen again.",
     image: "assets/postit-1.jpg", thumb: "assets/postit-2.jpg",
     watch: "https://vimeo.com/1195858195",
     awards: ["AWARD ’22 Bronze", "AWARD ’22 2× Finalist", "Immortal ANZ Finalist", "MAD STARS Finalist", "Bestads Interactive"],
@@ -164,7 +159,7 @@ const awardsData = [
   { org: "Bestads", wide: true, items: [["Best Radio", "Black Heart — Shanty for Missing Chums"], ["Best Interactive", "X by Long White"], ["Best Interactive", "Post-it"], ["Best Print", "Hard Rated Official Apology"], ["Best Outdoor", "No Ugly Gut"], ["Best Outdoor", "realestate.co.nz Flatmates"]] }
 ];
 
-const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×11", "Available for the good briefs", "Art Direction", "Copywriting", "Misc. Trouble"];
+const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×11", "Art Direction", "Copywriting", "Misc. Trouble"];
 
 /* signature colour per project — drives a duotone tint for each panel + its index hover */
 const tones = {
