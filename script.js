@@ -109,7 +109,7 @@ const projects = [
         { title: "OOH", src: "assets/nougly-seq-02.jpg" },
         { title: "Mockup", src: "assets/nougly-seq-03.jpg" }
       ] },
-      { type: "image", title: "Press", src: "assets/nougly-seq-04.jpg", portrait: true },
+      { type: "image", title: "Press", src: "assets/nougly-seq-04.jpg" },
       { type: "image", title: "OOH", src: "assets/nougly-seq-05.jpg" }
     ]
   },
@@ -420,15 +420,19 @@ function initWorklistPreview() {
     preview.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
     raf = visible ? requestAnimationFrame(loop) : null;
   };
+  const hide = () => { if (!visible) return; visible = false; preview.classList.remove("is-visible"); };
   rows.forEach((row) => {
-    row.addEventListener("mouseenter", () => {
+    row.addEventListener("mouseenter", (ev) => {
       img.src = row.dataset.previewSrc;
+      tx = cx = ev.clientX; ty = cy = ev.clientY; // appear at the cursor — no fly-in from a stale spot
       visible = true; preview.classList.add("is-visible");
       if (!raf) loop();
     });
     row.addEventListener("mousemove", (ev) => { tx = ev.clientX; ty = ev.clientY; });
-    row.addEventListener("mouseleave", () => { visible = false; preview.classList.remove("is-visible"); });
+    row.addEventListener("mouseleave", hide);
   });
+  // dismiss the floating preview on scroll — otherwise it sticks/jumps as rows slide out from under the cursor
+  window.addEventListener("scroll", hide, { passive: true });
 }
 
 function initVideos() {
