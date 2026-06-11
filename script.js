@@ -47,12 +47,14 @@ const projects = [
     role: "Launch Platform / Film / Social", result: "Gary lived, and sold unused sugar.",
     image: "assets/xlong-1.jpg", thumb: "assets/xlong-2.jpg",
     watch: "https://vimeo.com/1132862636",
-    awards: ["Bestads Best Interactive", "AXIS ’26 Finalists", "Mumbrella ’26 Shortlist"],
+    awards: ["Bestads Best Interactive", "AXIS ’26 7× Finalist", "Mumbrella ’26 Shortlist"],
     media: [
-      { type: "embed", title: "The Sugar Liquidation Sale!", src: "https://player.vimeo.com/video/1132862636", poster: "assets/xlong-video-poster.jpg" },
-      { type: "image", title: "PR mockup", src: "assets/xlong-seq-01.jpg" },
-      { type: "image", title: "Out of home", src: "assets/xlong-seq-02.jpg" },
-      { type: "image", title: "Out of home", src: "assets/xlong-seq-03.jpg" },
+      { type: "video", title: "Gary’s Sugar Liquidation Sale — the film", src: "assets/xlong-final.mp4", poster: "assets/xlong-final-poster.jpg" },
+      { type: "image", title: "The craziest sale", src: "assets/xlong-seq-01.jpg" },
+      { type: "imageGrid", items: [
+        { title: "Out of home", src: "assets/xlong-seq-02.jpg" },
+        { title: "Out of home", src: "assets/xlong-seq-03.jpg" }
+      ] },
       { type: "embed", title: "Sugar Liquidation — Dancing", src: "https://player.vimeo.com/video/1132863466", poster: "assets/xlong-dancing-poster.jpg", autoplay: true },
       { type: "image", title: "The notebook", src: "assets/xlong-seq-04.gif" },
       { type: "embed", title: "Sugar pour", src: "https://player.vimeo.com/video/1195854720", poster: "assets/xlong-sugar-pour-poster.jpg", autoplay: true },
@@ -151,7 +153,7 @@ const awardsData = [
   { org: "Spikes Asia", items: [["Silver Spike", "2026 — Retail Promotions — Hard Rated Homecoming"]] },
   { org: "B&T Awards", items: [["Winner", "2024 — Best Digital Campaign — Bulla Margaret"], ["Finalist", "2024 — Award for Bravery — Bulla Margaret"], ["Finalist", "2024 — Best Use of Social — Bulla Margaret"]] },
   { org: "AWARD Awards", items: [["Bronze", "2022 — Best Use of Social — Post-it"], ["2× Finalist", "2022 — Integrated & Digital — Post-it"], ["Finalist", "2025 — Community — Bulla Margaret"], ["Bronze", "2025 — PR & Promotion — WWF The Finger"]] },
-  { org: "AXIS Awards", wide: true, items: [["2× Silver", "2025 — No Ugly Gut"], ["2× Bronze", "2025 — No Ugly Gut"], ["3× Bronze", "2025 — WWF The Finger"], ["2× Bronze", "2026 — Hard Rated Homecoming"], ["3× Finalist", "2026 — Hard Rated Homecoming"], ["Silver", "2026 — Radio — Shanty for Missing Chums"], ["Bronze", "2026 — Radio 30s+ — Shanty"]] },
+  { org: "AXIS Awards", wide: true, items: [["2× Silver", "2025 — No Ugly Gut"], ["2× Bronze", "2025 — No Ugly Gut"], ["3× Bronze", "2025 — WWF The Finger"], ["2× Bronze", "2026 — Hard Rated Homecoming"], ["3× Finalist", "2026 — Hard Rated Homecoming"], ["Silver", "2026 — Radio Campaign — Shanty for Missing Chums"], ["2× Bronze", "2026 — Radio — Shanty for Missing Chums"], ["7× Finalist", "2026 — Sugar Liquidation Sale"]] },
   { org: "Cairns Crocodiles", items: [["Bronze", "2025 — Data-Driven — WWF The Finger"], ["Shortlist", "2025 — Changing the World — WWF"], ["Finalist", "2026 — Hard Rated Homecoming"]] },
   { org: "Webby Awards", items: [["Honoree", "2025 — Non-Profit — WWF: Give Shane Jones The Finger"]] },
   { org: "MAD STARS", items: [["Finalist", "2022 — Post-it A Little Space to Think"]] },
@@ -160,7 +162,7 @@ const awardsData = [
   { org: "Bestads", wide: true, items: [["Best Radio", "Black Heart — Shanty for Missing Chums"], ["Best Interactive", "X by Long White"], ["Best Interactive", "Post-it"], ["Best Print", "Hard Rated Official Apology"], ["Best Outdoor", "No Ugly Gut"], ["Best Outdoor", "realestate.co.nz Flatmates"]] }
 ];
 
-const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×11", "Art Direction", "Copywriting"];
+const tickerItems = ["Cannes Young Lions — Global Gold", "Spikes Asia Silver", "Webby Honoree", "B&T Best Digital", "AXIS Metal ×12", "Art Direction", "Copywriting"];
 
 /* signature colour per project — drives a duotone tint for each panel + its index hover */
 const tones = {
@@ -230,6 +232,14 @@ function mediaEmbed(item) {
       <span class="video-play"><span>▶</span></span>
     </div>`;
 }
+function mediaVideoFile(item) {
+  // self-hosted clip — identical poster + ▶ treatment to a non-autoplay embed; click swaps in a <video>
+  const portrait = item.orientation === "portrait";
+  return `<div class="video ${portrait ? "video--portrait" : ""}" data-video-file="${item.src}" role="button" tabindex="0" aria-label="Play ${esc(item.title || "video")}">
+      <img class="video-poster" src="${item.poster}" alt="" loading="lazy" decoding="async" />
+      <span class="video-play"><span>▶</span></span>
+    </div>`;
+}
 function mediaTrack(image, audio, i) {
   return `<div class="track" data-track>
       <div class="track-cover"><img src="${image.src}" alt="${esc(image.title || "")}" loading="lazy" /></div>
@@ -277,6 +287,8 @@ function renderMedia(project) {
     }
 
     if (item.type === "embed") { out.push(mediaEmbed(item)); i += 1; continue; }
+
+    if (item.type === "video") { out.push(mediaVideoFile(item)); i += 1; continue; }
 
     if (item.type === "imageGrid") {
       out.push(item.items.map((g) => mediaImage(g, "media-unit--half")).join(""));
@@ -439,6 +451,7 @@ function initVideos() {
   const boxes = [...document.querySelectorAll(".video")];
   if (!boxes.length) return;
   const entries = []; // { box, player, sound, muted }
+  const fileVideos = []; // self-hosted <video> elements (click-to-play files)
   let io = null;
 
   // mute/unmute an ambient autoplay loop and reflect it on its button
@@ -452,12 +465,15 @@ function initVideos() {
     if (b) { b.textContent = muted ? "Unmute" : "Mute"; b.setAttribute("aria-label", muted ? "Unmute video" : "Mute video"); }
   };
 
-  // exactly one source may have audio — pause sound videos, mute ambient loops
-  const claimAudio = (except) => entries.forEach((e) => {
-    if (e.player === except) return;
-    if (e.sound) e.player.pause().catch(() => {});
-    else if (e.muted === false) setAutoplayMuted(e, true);
-  });
+  // exactly one source may have audio — pause sound videos, mute ambient loops, stop file clips
+  const claimAudio = (except) => {
+    entries.forEach((e) => {
+      if (e.player === except) return;
+      if (e.sound) e.player.pause().catch(() => {});
+      else if (e.muted === false) setAutoplayMuted(e, true);
+    });
+    fileVideos.forEach((v) => v.pause());
+  };
 
   const register = (box, iframe, sound) => {
     if (!window.Vimeo?.Player || entries.find((e) => e.box === box)) return;
@@ -500,6 +516,29 @@ function initVideos() {
         entry.player.setVolume(1).catch(() => {});
         entry.player.play().catch(() => {});
       }).catch(() => {});
+    };
+    box.addEventListener("click", open);
+    box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+
+  // click-to-play for self-hosted video files — same poster + ▶ treatment as the embeds
+  const fileVidIO = ("IntersectionObserver" in window) ? new IntersectionObserver((obs) => {
+    obs.forEach((o) => { if (!o.isIntersecting) o.target.querySelector("video")?.pause(); }); // pause on scroll-away, like the embeds
+  }, { threshold: 0.2 }) : null;
+  boxes.forEach((box) => {
+    const fileSrc = box.dataset.videoFile;
+    if (!fileSrc) return;
+    fileVidIO?.observe(box);
+    const open = () => {
+      if (box.classList.contains("is-loaded")) return;
+      claimAudio(null); // stop anything else already making sound
+      const v = document.createElement("video");
+      v.src = fileSrc; v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.setAttribute("playsinline", "");
+      box.appendChild(v);
+      box.classList.add("is-loaded");
+      fileVideos.push(v);
+      v.play().catch(() => {});
     };
     box.addEventListener("click", open);
     box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
@@ -673,7 +712,11 @@ function wireDogBarks() {
   // so the bark stays silent until the page is clicked. Unlock it on the first interaction anywhere.
   const unlockAudio = () => { const ctx = getDogAudioContext(); if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {}); };
   ["pointerdown", "touchstart", "keydown"].forEach((ev) => window.addEventListener(ev, unlockAudio, { passive: true }));
+  // when the index overlay is open it covers the hero — but the dogs still occupy
+  // their layout spot underneath, so a pointermove would otherwise bark "through" it.
+  const navOpen = () => document.body.classList.contains("nav-open");
   const setHover = (dog, kind, hovered) => {
+    if (navOpen()) hovered = false;
     const was = dog.classList.contains("is-dog-hovered");
     dog.classList.toggle("is-dog-hovered", hovered);
     if (hovered && !was) playDogBark(kind);
@@ -689,7 +732,7 @@ function wireDogBarks() {
   dogs.forEach(({ dog, kind }) => {
     dog.addEventListener("focusin", () => setHover(dog, kind, true));
     dog.addEventListener("focusout", () => setHover(dog, kind, false));
-    dog.addEventListener("click", () => playDogBark(kind));
+    dog.addEventListener("click", () => { if (!navOpen()) playDogBark(kind); });
   });
 }
 
