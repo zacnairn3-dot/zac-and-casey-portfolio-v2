@@ -674,9 +674,14 @@ function initNav() {
 }
 
 function initToTop() {
-  document.querySelector("[data-to-top]")?.addEventListener("click", () => {
+  const toTop = (e) => {
+    if (e) e.preventDefault();              // the logo is <a href="#top"> — native anchor scroll strands mid-lazy-load
+    if (cancelJump) cancelJump();           // stop any in-flight nav re-pin, or it yanks you back to the loaded project
+    history.replaceState(null, "", location.pathname + location.search); // drop the stale #project hash
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
-  });
+  };
+  // the "back to top" button AND the Z&C logo mark both return to the intro
+  document.querySelectorAll("[data-to-top], .hud-mark").forEach((el) => el.addEventListener("click", toTop));
 }
 
 /* ---------- Lola & Neal: synthesized barks (Web Audio, no sound file) ---------- */
