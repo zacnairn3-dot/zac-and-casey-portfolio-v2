@@ -85,8 +85,9 @@
 
           <figure class="hero-plate" data-reveal aria-label="Zac and Casey collecting Gold at Cannes">
             <picture>
+              <source media="(max-width: 700px)" srcset="assets/cannes-stage-mobile.svg" type="image/svg+xml" />
               <source srcset="assets/cannes-stage.webp" type="image/webp" />
-              <img src="assets/cannes-stage.gif" alt="Zac and Casey walking on stage at Cannes" loading="eager" />
+              <img src="assets/cannes-stage.gif" alt="Zac and Casey walking on stage at Cannes" loading="eager" fetchpriority="high" width="340" height="248" />
             </picture>
             <figcaption><span>Cannes Young Lions</span><b>Global Gold ’23</b></figcaption>
           </figure>
@@ -160,5 +161,6 @@
     </main>
 
     <script src="script.js?v=45" defer></script>
+    <script src="site-overrides.js?v=1" defer></script>
   </body>
 </html>
