@@ -2,6 +2,14 @@
   const oldSrc = "assets/hard-rated-result.jpg";
   const newSrc = "assets/hard-rated-second-result.png";
   const newTitle = "No.1 RTD SKU in NZ";
+  const cropClass = "hard-rated-result-crop";
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .media-unit.${cropClass} { aspect-ratio: 16 / 9; }
+    .media-unit.${cropClass} img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  `;
+  document.head.append(style);
 
   try {
     const hardRated = typeof projects !== "undefined" && projects.find((p) => p.id === "hard-rated");
@@ -14,8 +22,9 @@
       });
   } catch (_) {}
 
-  document.querySelectorAll(`img[src="${oldSrc}"]`).forEach((img) => {
+  document.querySelectorAll(`img[src="${oldSrc}"], img[src="${newSrc}"]`).forEach((img) => {
     img.src = newSrc;
     img.alt = newTitle;
+    img.closest(".media-unit")?.classList.add(cropClass);
   });
 })();
