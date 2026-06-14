@@ -7,9 +7,10 @@
 
   const style = document.createElement("style");
   style.textContent = `
-    #hard-rated .media-unit--half { aspect-ratio: 16 / 9; }
+    #hard-rated .media-unit--half { aspect-ratio: 1800 / 1172; }
     #hard-rated .media-unit--half img,
     .media-unit.${cropClass} img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .media-unit.${cropClass} img { height: 100.6%; transform: translateY(-0.45%); }
   `;
   document.head.append(style);
 
