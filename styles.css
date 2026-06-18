@@ -506,9 +506,9 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .reel .video { grid-column: auto; }
 
 /* audio / radio players (Black Heart) */
-.tracks { grid-column: span 12; display: grid; gap: clamp(12px, 1.6vw, 22px); }
+.tracks { grid-column: span 12; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); }
 .track {
-  display: grid; grid-template-columns: clamp(140px, 18vw, 280px) 1fr; gap: clamp(16px, 2vw, 32px);
+  display: grid; grid-template-columns: clamp(120px, 13vw, 200px) 1fr; gap: clamp(16px, 2vw, 32px);
   border: 1px solid var(--rule); padding: clamp(14px, 1.6vw, 24px); align-items: center; background: rgba(0,0,0,0.12);
 }
 .track-cover { overflow: hidden; }
@@ -608,6 +608,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
   .media-unit--half { grid-column: span 12; }
   .video--portrait { grid-column: span 6; }
   .award-board { column-count: 2; }
+  .tracks { grid-template-columns: 1fr; }
   .track { grid-template-columns: 1fr; }
   .track-lyrics { columns: 1; }
   .overlay { place-items: start; }
