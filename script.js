@@ -49,6 +49,7 @@ const projects = [
     watch: "https://vimeo.com/1132862636",
     awards: ["Bestads Best Interactive", "AXIS ’26 7× Finalist", "Mumbrella ’26 Shortlist"],
     media: [
+      { type: "video", title: "Sugar Liquidation — case study", src: "assets/xlong-final.mp4", poster: "assets/xlong-final-poster.jpg" },
       { type: "embed", title: "Gary’s Sugar Liquidation Sale — the film", src: "https://player.vimeo.com/video/1132862636", autoplay: true },
       { type: "image", title: "The craziest sale", src: "assets/xlong-seq-01.jpg" },
       { type: "imageGrid", items: [
