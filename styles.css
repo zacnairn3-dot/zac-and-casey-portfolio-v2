@@ -364,7 +364,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .hero-cue { position: absolute; z-index: 1; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; gap: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
 .hero-amp { color: var(--hero-accent); }
 .name-link { color: var(--hero-accent); white-space: nowrap; transition: opacity 0.2s; }
-.name-link:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.name-link:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; } /* visited links suppress var() colours, so the spans animate through the palette directly */ @keyframes name-hue { 0% {color:#b3741a} 12.5% {color:#1c7d57} 25% {color:#8e3cc7} 37.5% {color:#1f6fb8} 50% {color:#8c2747} 62.5% {color:#c8463a} 75% {color:#c8930c} 87.5% {color:#2f8fb5} 100% {color:#b3741a} } .name-link span { animation: name-hue 32s linear infinite; }
 .hero-cue span:last-child { animation: bob 2.4s var(--ease) infinite; }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 
