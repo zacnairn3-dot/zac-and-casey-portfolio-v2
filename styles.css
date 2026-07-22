@@ -281,7 +281,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .hero-title .line-inner { display: block; }
 .hero-title em { color: var(--white); }
 .panel--black .hero-title em { color: var(--white); }/* keep the headline's colours when clicked/selected */
-.hero-title::selection, .hero-title *::selection, .hero-lead::selection, .hero-lead *::selection { background: rgba(255,255,255,0.16); color: currentColor; }
+.hero-title::selection, .hero-title *::selection, .hero-lead::selection, .hero-lead *::selection { background: rgba(255,255,255,0.16); color: var(--white); } .hero-amp::selection, .name-link::selection, .name-link span::selection { background: rgba(255,255,255,0.16); color: var(--hero-accent); }
 
 
 .hero-lead {
