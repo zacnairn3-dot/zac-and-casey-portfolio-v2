@@ -279,8 +279,8 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 }
 .hero-title .line { display: block; overflow: hidden; }
 .hero-title .line-inner { display: block; }
-.hero-title em { color: var(--white); }
-.panel--black .hero-title em { color: var(--white); }
+.hero-title em { color: var(--hero-accent); }
+.panel--black .hero-title em { color: var(--hero-accent); }
 
 .hero-lead {
   grid-column: 1; max-width: 30ch;
