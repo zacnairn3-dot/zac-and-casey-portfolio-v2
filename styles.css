@@ -134,7 +134,7 @@ sup { font-size: 0.5em; vertical-align: super; }
 .panel-title {
   font-weight: 800;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 0.85;
   letter-spacing: -0.025em;
   font-size: clamp(48px, 11vw, 168px);
   margin: 0.22em 0 0;
@@ -273,7 +273,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 
 .hero-title {
   grid-column: 1 / -1; font-weight: 800; text-transform: uppercase;
-  letter-spacing: -0.035em; line-height: 1;
+  letter-spacing: -0.035em; line-height: 0.82;
   font-size: clamp(46px, min(23cqw, 24vh), 330px); /* fits container width AND viewport height — never clips */
   margin: clamp(4px, 0.6vh, 16px) 0;
 }
@@ -422,7 +422,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .worklist-row:hover::before { transform: scaleY(1); }
 .worklist-num { font-family: var(--mono); font-size: clamp(12px, 1vw, 15px); color: var(--fg-dim); font-variant-numeric: tabular-nums; transition: color 0.3s; }
 .worklist-row:hover .worklist-num { color: rgba(255,255,255,0.7); }
-.worklist-client { justify-self: start; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(30px, 5.4vw, 96px); }
+.worklist-client { justify-self: start; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.9; font-size: clamp(30px, 5.4vw, 96px); }
 .worklist-meta { display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 4px; }
 .worklist-title { font-size: clamp(13px, 1.2vw, 19px); font-weight: 600; max-width: 26ch; }
 .worklist-role { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim); }
@@ -451,7 +451,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 }
 .case-top .case-client { color: var(--fg); font-weight: 700; }
 .case-title {
-  font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -0.028em;
+  font-weight: 800; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.028em;
   font-size: clamp(40px, 9.2vw, 150px); margin: clamp(20px, 3vw, 48px) 0 0;
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.34em;
 }
@@ -580,7 +580,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .contact-grid, .colophon { position: relative; z-index: 1; }
 .contact-title em { color: var(--hero-accent); } /* cycles like the hero ampersand */
 .contact-grid { max-width: var(--maxw); margin: 0 auto; width: 100%; }
-.contact-title { font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -0.035em; font-size: clamp(38px, 8.8vw, 150px); margin: 0.12em 0 0; }
+.contact-title { font-weight: 800; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.035em; font-size: clamp(38px, 8.8vw, 150px); margin: 0.12em 0 0; }
 .contact-links { list-style: none; display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 90px); margin-top: clamp(32px, 5vw, 72px); }
 .contact-links li { display: grid; gap: 6px; }
 .contact-links span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); }
