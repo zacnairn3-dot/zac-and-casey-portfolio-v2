@@ -10,7 +10,6 @@
 :root {
   /* Palette — pulled from the reference card set */
   --paper: #e7e6e1;       /* light off-white panel  */
-  --paper-2: #deded8;
   --ink: #0c0c0c;         /* near-black             */
   --black: #0b0b0b;
   --white: #f6f5f1;
@@ -25,7 +24,6 @@
   --bg: var(--paper);
   --fg: var(--ink);
   --fg-dim: color-mix(in srgb, var(--fg) 55%, transparent);
-  --fg-faint: color-mix(in srgb, var(--fg) 18%, transparent);
   --rule: color-mix(in srgb, var(--fg) 16%, transparent);
 
   --maxw: 1680px;
@@ -87,14 +85,13 @@ sup { font-size: 0.5em; vertical-align: super; }
 .panel--red   { --bg: var(--red);   --fg: #f4ecea; }
 .panel--gray  { --bg: var(--gray);  --fg: var(--gray-text); }
 .panel--paper { --fg-dim: color-mix(in srgb, var(--fg) 52%, transparent);
-                --fg-faint: color-mix(in srgb, var(--fg) 16%, transparent);
                 --rule: color-mix(in srgb, var(--fg) 18%, transparent); }
 .panel--red   { --fg-dim: color-mix(in srgb, var(--fg) 70%, transparent);
-                --fg-faint: rgba(255,255,255,0.22); --rule: rgba(255,255,255,0.28); }
+--rule: rgba(255,255,255,0.28); }
 .panel--gray  { --fg-dim: color-mix(in srgb, var(--fg) 66%, transparent);
-                --fg-faint: rgba(255,255,255,0.22); --rule: rgba(255,255,255,0.26); }
+--rule: rgba(255,255,255,0.26); }
 .panel--black { --fg-dim: rgba(246,245,241,0.55);
-                --fg-faint: rgba(246,245,241,0.16); --rule: rgba(246,245,241,0.18); }
+--rule: rgba(246,245,241,0.18); }
 
 /* Project-derived duotones — background is a deep/pale tint of the project's
    signature hue (--tone); the vivid hue is saved for accents + headings. */
@@ -103,7 +100,6 @@ sup { font-size: 0.5em; vertical-align: super; }
   --fg: color-mix(in srgb, var(--tone) 8%, #f3f0e9);
   --accent: color-mix(in srgb, var(--tone) 52%, #ffffff);
   --fg-dim: color-mix(in srgb, var(--fg) 56%, transparent);
-  --fg-faint: color-mix(in srgb, var(--fg) 15%, transparent);
   --rule: color-mix(in srgb, var(--fg) 20%, transparent);
 }
 .panel--tint-light {
@@ -111,7 +107,6 @@ sup { font-size: 0.5em; vertical-align: super; }
   --fg: color-mix(in srgb, var(--tone) 28%, #100f0d);
   --accent: color-mix(in srgb, var(--tone) 84%, #0c0a08);
   --fg-dim: color-mix(in srgb, var(--fg) 52%, transparent);
-  --fg-faint: color-mix(in srgb, var(--fg) 16%, transparent);
   --rule: color-mix(in srgb, var(--fg) 18%, transparent);
 }
 .panel--tint-dark em, .panel--tint-light em { color: var(--accent); }
@@ -151,15 +146,6 @@ sup { font-size: 0.5em; vertical-align: super; }
 }
 
 /* Shimmer for "Zac/Casey" links + Shiny Nonsense */
-.shiny {
-  position: relative; color: var(--accent); white-space: nowrap;
-  background: linear-gradient(100deg, currentColor 0%, currentColor 40%, #fff 50%, currentColor 60%, currentColor 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4.5s linear infinite;
-}
-.panel--black .shiny { color: #ff5b4d; }
 @keyframes shimmer { to { background-position: -250% 0; } }
 
 .muted { color: var(--fg-dim); }
@@ -464,8 +450,6 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .case-spec:last-child { border-bottom: 1px solid var(--rule); }
 .case-spec dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim); padding-top: 3px; }
 .case-spec dd { font-weight: 600; }
-.case-spec--watch a { display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: gap 0.3s var(--ease); }
-.case-spec--watch a:hover { gap: 14px; }
 
 .case-awards { margin-top: clamp(20px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .case-awards .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); margin-right: 6px; }
@@ -478,8 +462,6 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .media-unit--half { grid-column: span 6; }
 .media-unit--portrait { grid-column: span 12; width: 100%; max-width: 600px; justify-self: center; } /* portrait posters: centred + capped, not full-bleed */
 .media-unit img { width: 100%; height: 100%; object-fit: cover; }
-.media-cap { position: absolute; left: 10px; bottom: 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); padding: 4px 8px; backdrop-filter: blur(4px); opacity: 0; transform: translateY(6px); transition: opacity 0.35s, transform 0.35s var(--ease); }
-.media-unit:hover .media-cap { opacity: 1; transform: translateY(0); }
 
 /* video embeds (click to load) */
 .video { grid-column: span 12; position: relative; cursor: pointer; background: #000; border: 1px solid var(--rule); overflow: hidden; }
@@ -499,7 +481,6 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .video iframe { position: absolute; top: -3px; left: -3px; width: calc(100% + 6px); height: calc(100% + 6px); border: 0; }
 .video > video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; object-fit: cover; }
 .video.is-loaded .video-poster, .video.is-loaded .video-play { opacity: 0; pointer-events: none; }
-.video-label { position: absolute; top: 12px; left: 14px; z-index: 2; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
 
 /* custom controls for ambient autoplay loops — restart + unmute, bottom-right cluster */
 .video-controls {
@@ -553,7 +534,6 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .track.show-lyrics .track-lyrics { display: block; }
 .track.show-lyrics .track-lyrics-toggle { color: var(--fg); }
 
-.case-foot { max-width: var(--maxw); margin: clamp(40px, 5vw, 80px) auto 0; display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim); }
 
 /* =============================================================
    AWARDS BOARD
@@ -588,11 +568,8 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 .contact-links a:hover { color: var(--hero-accent); border-color: var(--hero-accent); }
 .contact-links a.contact-secondary { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); border-bottom: none; }
 .contact-links a.contact-secondary:hover { color: #fff; }
-.contact-social { list-style: none; display: flex; gap: 28px; flex-wrap: wrap; margin-top: 28px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); }
-.contact-social a:hover { color: #fff; }
 
 .colophon { max-width: var(--maxw); margin: clamp(48px, 7vh, 100px) auto 0; width: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; border-top: 1px solid var(--rule); padding-top: 20px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); }
-.colophon-mark { color: var(--fg); font-weight: 700; }
 .to-top { margin-left: auto; background: none; border: none; color: var(--fg-dim); cursor: pointer; font: inherit; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.3s; }
 .to-top:hover { color: var(--fg); }
 
@@ -612,7 +589,7 @@ body.nav-open .overlay { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal], .js .hero-title .line-inner { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .ticker-track, .shiny, .shiny-title .shiny-word, .hero-cue span:last-child { animation: none !important; }
+  .ticker-track, .shiny-title .shiny-word, .hero-cue span:last-child { animation: none !important; }
   .worklist-preview { display: none !important; }
   .hero-dog--lola, .hero-dog--neal, .hero-dog-mouth, .hero-dog img, .hero-plate { animation: none !important; }
   html, .hero { animation: none !important; }
