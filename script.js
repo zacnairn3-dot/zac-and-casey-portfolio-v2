@@ -26,7 +26,7 @@ const projects = [
     id: "wwf", client: "WWF", title: "Give Shane Jones the Finger",
     line: "We got 40,000+ New Zealanders to send a corrupt Oceans and Fisheries Minister the fish finger.",
     role: "Activation / Protest / Earned", result: "40,000+ fingers given to Shane.",
-    image: "assets/wwf-1.jpg", thumb: "assets/wwf-2.jpg",
+    image: "assets/wwf-seq-01.jpg", thumb: "assets/wwf-seq-05.jpg",
     watch: "https://vimeo.com/1110653590",
     awards: ["AXIS ’25 3× Bronze", "AWARD ’25 Bronze", "Webby ’25 Honoree", "Cairns Crocodiles ’25 Bronze"],
     media: [
@@ -68,7 +68,7 @@ const projects = [
     id: "realestate", client: "Realestate.co.nz", title: "Your Next Rental Starts Here",
     line: "We highlighted all the reasons renters move — to show that finding your next rental starts at Realestate.co.nz.",
     role: "OOH / Print / Platform", result: "Renters felt seen and heard.",
-    image: "assets/realestate-1.jpg", thumb: "assets/realestate-2.jpg",
+    image: "assets/realestate-1.jpg", thumb: "assets/realestate-seq-02.jpg",
     watch: "https://zacandcasey.com/realestate-co-nz",
     awards: ["Bestads Best Outdoor"],
     media: [
@@ -102,7 +102,7 @@ const projects = [
     id: "no-ugly", client: "No Ugly Gut", title: "Beauty is Gut Deep",
     line: "We turned probiotic bacteria into works of art for a wellness drink brand called No Ugly Gut.",
     role: "Design / OOH / Film", result: "Bacteria worth staring at.",
-    image: "assets/nougly-video-poster.jpg", thumb: "assets/nougly-2.jpg",
+    image: "assets/nougly-video-poster.jpg", thumb: "assets/nougly-seq-02.jpg",
     watch: "https://vimeo.com/1110651390",
     awards: ["AXIS ’25 2× Silver", "AXIS ’25 2× Bronze"],
     media: [
@@ -120,7 +120,7 @@ const projects = [
     id: "post-it", client: "Post-it", title: "A Little Space to Think",
     line: "We made the humble note relevant again, when the world was glued to screens in COVID lockdown.",
     role: "Film / Digital / Participation", result: "People reached for a pen again.",
-    image: "assets/postit-1.jpg", thumb: "assets/postit-2.jpg",
+    image: "assets/postit-1.jpg", thumb: "assets/postit-seq-03.jpg",
     watch: "https://vimeo.com/1195858195",
     awards: ["AWARD ’22 Bronze", "AWARD ’22 2× Finalist", "Immortal ANZ Finalist", "MAD STARS Finalist", "Bestads Interactive"],
     media: [
@@ -136,7 +136,7 @@ const projects = [
     id: "bulla", client: "Bulla Family Dairy", title: "Chief Cottage Cheese Officer",
     line: "We created a lovable, cringeworthy cottage-cheese influencer for Australia’s most beloved dairy company. She blew up on the TikToks, landed on The Gruen Transfer, and even earned real media for selling too much cottage cheese.",
     role: "Character / Social / Earned", result: "Sold too much cottage cheese.",
-    image: "assets/bulla-1.jpg", thumb: "assets/bulla-2.png",
+    image: "assets/bulla-1.jpg", thumb: "assets/bulla-seq-01.png",
     watch: "https://vimeo.com/951795401",
     awards: ["B&T ’24 Best Digital — Winner", "B&T ’24 Bravery Finalist", "B&T ’24 Social Finalist", "AWARD ’25 Finalist"],
     media: [
